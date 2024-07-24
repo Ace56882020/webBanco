@@ -39,7 +39,6 @@ export class ProductService {
   }
 
   createProduct(product: any): Observable<any> {
-    console.log(product, 'create');
     const body = {
       id: product.id,
       name: product.name,

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,7 +24,8 @@ import LoadingComponent from 'src/app/component/loading/loading.component';
     FormsModule,
     MatMenuModule,
     MatIconModule,
-    LoadingComponent
+    LoadingComponent,
+    NgIf
   ],
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
@@ -84,7 +85,6 @@ export class ListProductsComponent implements OnInit {
     }
   }
 
-
   fn_addProduct() {
     this.dataSrv.setData({
       id: null,
@@ -104,7 +104,6 @@ export class ListProductsComponent implements OnInit {
     this.router.navigate(['product/add-product']);
   }
 
-  // eliminar categoria
   fn_deleteProduct(product: any) {
     const dialogRef = this.dialog.open(DeleteProductComponent, {
       data: { id: product.id, name: product.name },

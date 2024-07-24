@@ -58,22 +58,14 @@ export class AddProductsComponent implements OnInit {
     if (this.proudctData.id != null || this.proudctData.id != undefined) {
       this.refillForm(this.proudctData);
       this.disableBtn = true;
-    } else {
-    }
-    console.log(this.proudctData);
+    } 
   }
 
   getProductoId() {
-    console.log('object', this.adminForm.value.id);
     this.productSrv
       .getProductVerify(this.adminForm.value.id)
       .subscribe((resp) => {
         this.isIdValid = resp;
-        console.log(resp);
-        //animacion de carga de datos
-        setTimeout(() => {
-          // this.loadingSrv.hideLoading()
-        }, 250);
       });
   }
 
@@ -92,7 +84,6 @@ export class AddProductsComponent implements OnInit {
   }
 
   refillForm(product: any) {
-    console.log(product);
     const releaseDate = new Date(product.releaseDate);
     const releaseYearDate = new Date(
       releaseDate.getFullYear(),
@@ -114,9 +105,6 @@ export class AddProductsComponent implements OnInit {
       releaseDate: this.utils.formatDateEdit(releaseYearDate),
       revisionDate: this.utils.formatDate(revisionYearDate),
     });
-    setTimeout(() => {
-      // this.loadingSrv.hideLoading()
-    }, 250);
   }
 
   genereteDate() {
@@ -133,7 +121,6 @@ export class AddProductsComponent implements OnInit {
     this.adminForm.value.revisionDate =
       this.utils.formatDateSubmit(nextYearDate);
     this.dateRevision = this.adminForm.value.revisionDate;
-    console.log(this.adminForm.value.revisionDate);
   }
 
   resetForm() {
@@ -163,7 +150,6 @@ export class AddProductsComponent implements OnInit {
     }
     this.productSrv.createProduct(this.adminForm.value).subscribe(
       (resp) => {
-        console.log(resp);
         this.toastSrv.success('Exitosa', this.titleMsg);
         this.router.navigate(['product']);
       },
