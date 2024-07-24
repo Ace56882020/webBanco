@@ -19,8 +19,6 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
-import { LoadingComponent } from './component/loading/loading.component';
-
 
 @NgModule({
   declarations: [
@@ -28,7 +26,7 @@ import { LoadingComponent } from './component/loading/loading.component';
     FullComponent,
     AppHeaderComponent,
     SpinnerComponent,
-    LoadingComponent,
+
   ],
   imports: [
     BrowserModule,

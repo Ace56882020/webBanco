@@ -13,6 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { LocalStorageService } from '../../../../services/localStorage.service';
 import { DeleteProductComponent } from '../delete-product/delete-product.component';
+import LoadingComponent from 'src/app/component/loading/loading.component';
 
 @Component({
   standalone: true,
@@ -23,6 +24,7 @@ import { DeleteProductComponent } from '../delete-product/delete-product.compone
     FormsModule,
     MatMenuModule,
     MatIconModule,
+    LoadingComponent
   ],
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
@@ -44,10 +46,8 @@ export class ListProductsComponent implements OnInit {
   constructor(
     private productSrv: ProductService,
     private router: Router,
-    private toastSrv: ToastService,
     private loadingSrv: LoadingService,
     private dataSrv: DataService,
-    private localStorageSrv: LocalStorageService,
     public dialog: MatDialog
   ) {}
 
