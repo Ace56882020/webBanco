@@ -29,3 +29,21 @@
     justify-content: space-evenly;
     margin-top: 6%;
   }
+  .container{
+    background: #fff;
+    border-radius: 20px;
+    height: 100%;
+    align-items: end;
+    display: grid;
+    padding: 20px;
+  }
+  .title{
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #000;
+  }
+  .divisor{
+    width: 100%; 
+    height: 1px; 
+    background: #ECECEC;
+  }

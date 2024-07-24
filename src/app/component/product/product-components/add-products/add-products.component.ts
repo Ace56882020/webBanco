@@ -1,17 +1,15 @@
-import { CommonModule, formatDate } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
-import { LocalStorageService } from 'src/app/services/localStorage.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { Utils } from 'src/app/utils/utils';
@@ -38,21 +36,14 @@ export class AddProductsComponent implements OnInit {
 
   constructor(
     private productSrv: ProductService,
-    private fb: FormBuilder,
     private router: Router,
     private toastSrv: ToastService,
-    private localStorageSrv: LocalStorageService,
     private dataSrv: DataService
   ) {
     this.minDate = this.today.toISOString().split('T')[0];
     this.proudctData = this.dataSrv.getData();
   }
 
-
-  // Lógica para cambiar el estado de isLoading
-  toggleLoading() {
-    this.isLoading = !this.isLoading;
-  }
   ngOnInit(): void {
     this.buildForm();
     if (this.proudctData.id != null || this.proudctData.id != undefined) {
@@ -69,7 +60,7 @@ export class AddProductsComponent implements OnInit {
       });
   }
 
-  //validacion del formulario
+
   buildForm() {
     this.adminForm = new FormGroup({
       id: new FormControl('', [Validators.required]),

@@ -1,15 +1,8 @@
 <div
-  style="
-    background: #fff;
-    border-radius: 20px;
-    height: 100%;
-    align-items: end;
-    display: grid;
-    padding: 20px;
-  "
+  class="container"
 >
-  <div style="margin-bottom: 20px;">¿Estas seguro de eliminar el producto {{ titleProduct }}</div>
-  <div style="width: 100%; height: 1px; background: #ECECEC;"></div>
+  <div class="title">¿Estas seguro de eliminar el producto {{ titleProduct }}?</div>
+  <div class="divisor"></div>
   <div class="form-buttons-actions">
     <button  type="reset" class="reset-button" (click)="cancel()">
       Cancelar

@@ -6,14 +6,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import LoadingComponent from 'src/app/component/loading/loading.component';
 import { ProductResponse } from 'src/app/interfaces/productResposnse';
 import { DataService } from 'src/app/services/data.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { ProductService } from 'src/app/services/product.service';
-import { ToastService } from 'src/app/services/toast.service';
-import { LocalStorageService } from '../../../../services/localStorage.service';
 import { DeleteProductComponent } from '../delete-product/delete-product.component';
-import LoadingComponent from 'src/app/component/loading/loading.component';
 
 @Component({
   standalone: true,
@@ -53,9 +51,7 @@ export class ListProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadingSrv.show();
     this.getProducts();
-    localStorage.removeItem('PRODUCT_ID');
     if (![5, 10, 15, 20].includes(this.sizePerPage)) {
       this.sizePerPage = 5;
     }
@@ -109,7 +105,8 @@ export class ListProductsComponent implements OnInit {
       data: { id: product.id, name: product.name },
       disableClose: true,
       width:'40',
-      height:'30%'
+      height:'30%',
+      panelClass:'dialog-contaoner'
     });
     dialogRef.afterClosed().subscribe((resp: any) => {
       console.log(`Dialog result: ${resp}`);

@@ -184,3 +184,10 @@ td{
   width: 50px !important;
   text-align: center !important;
 }
+
+.dialog-container {
+  background-color: #ffffff; /* Color de fondo */
+  border-radius: 8px; /* Esquinas redondeadas */
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
