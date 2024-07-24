@@ -1,0 +1,87 @@
+<div class="form-container">
+  <h2 class="title">Formulario de Registro</h2>
+  <div style="width: 100%; height: 1px; background: #ECECEC;"></div>
+  <form [formGroup]="adminForm" class="form-container">
+    <div class="flex-input">
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input
+          formControlName="id"
+          style="width: 250px"
+          type="text"
+          (ngModelChange)="getProductoId()"
+          maxlength="10"
+          minlength="3"
+        />
+        <div>
+          <small class="error-message">
+            {{ !isIdValid ? "" : "ID no válido!" }}</small
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input
+          formControlName="name"
+          style="width: 250px"
+          type="text"
+          maxlength="100"
+          minlength="5"
+        />
+        <small class="error-message">
+            {{ adminForm.get('name')?.invalid && adminForm.get('name')?.touched  ? "Este campo es requerido!" : " " }}
+          </small>
+      </div>
+    </div>
+    <div class="flex-input">
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <input
+          style="width: 250px"
+          type="text"
+          formControlName="description"
+          maxlength="200"
+          minlength="10"
+        />
+        <small class="error-message">
+            {{ adminForm.get('description')?.invalid && adminForm.get('description')?.touched  ? "Este campo es requerido!" : " " }}
+          </small>
+      </div>
+      <div class="form-group">
+        <label for="logo">Logo</label>
+        <input style="width: 250px" type="text" formControlName="logo" />
+        <small class="error-message">
+            {{ adminForm.get('logo')?.invalid && adminForm.get('logo')?.touched  ? "Este campo es requerido!" : " " }}
+          </small>
+      </div>
+    </div>
+    <div class="flex-input">
+      <div class="form-group">
+        <label for="release-date">Fecha Liberación</label>
+        <input
+        id="releaseDate"
+          style="width: 250px"
+          type="date"
+          formControlName="releaseDate"
+          [attr.min]="minDate"
+          (ngModelChange)="genereteDate()"
+          
+        />
+        <small class="error-message">
+            {{ adminForm.get('releaseDate')?.invalid && adminForm.get('releaseDate')?.touched  ? "Este campo es requerido!" : " " }}
+          </small>
+      </div>
+      <div class="form-group">
+        <label for="review-date">Fecha Revisión</label>
+        <input
+          style="width: 250px"
+          formControlName="revisionDate"
+        />
+      </div>
+    </div>
+    <div class="form-buttons-actions">
+      <button type="reset" class="reset-button" (click)="resetForm()" [disabled]="disableBtn" >Reiniciar</button>
+      <button type="submit" class="submit-button" (click)="submitForm()">Enviar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,95 @@
+<div class="container-fluid mt-2">
+  <div class="row">
+    <div class="col-12">
+      <div class="card-headerBottom">
+        <div class="header">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="search-input"
+            [(ngModel)]="searchText"
+            (input)="onSearch()"
+          />
+          <button class="add-button" (click)="fn_addProduct()">Agregar</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="col-12">
+            <div class="table">
+              <div class="table-responsive table-striped">
+                <table class="col-12">
+                  <thead>
+                    <tr class="bg-warning">
+                      <th>{{ lbl_img }}</th>
+                      <th>{{ lbl_name }}</th>
+                      <th>{{ lbl_description }}</th>
+                      <th>{{ lbl_date_release }}</th>
+                      <th>{{ lbl_date_restructuring_ }}</th>
+                      <th>{{ lbl_settings }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of productList | slice : (pageInitial - 1) * sizePerPage : (pageInitial - 1) * sizePerPage + sizePerPage; let i = index">
+                      <td>
+                        <img
+                          src="{{ item.logo }}"
+                          alt="logo-tarjeta"
+                          class="img-logo"
+                        />
+                      </td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.description }}</td>
+                      <td>
+                        {{ item.date_release | date : "yyyy/MM/dd" : "UTC" }}
+                      </td>
+                      <td>
+                        {{ item.date_revision | date : "yyyy/MM/dd" : "UTC" }}
+                      </td>
+                      <td>
+                        <button
+                          mat-icon-button
+                          [matMenuTriggerFor]="menu"
+                          style="
+                            border: none;
+                            transform: rotate(90deg);
+                            background: transparent;
+                            outline: none;
+                          "
+                        >
+                          <span class="material-icons"> more_horiz </span>
+                        </button>
+
+                        <mat-menu #menu="matMenu">
+                          <button mat-menu-item (click)="fn_editProduct(item)">
+                            <mat-icon>edit</mat-icon>
+                            <span>Editar</span>
+                          </button>
+                          <button
+                            mat-menu-item
+                            (click)="fn_deleteProduct(item)"
+                          >
+                            <mat-icon>delete</mat-icon>
+                            <span>Eliminar</span>
+                          </button>
+                        </mat-menu>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between">
+            <div class="footer">{{ productList.length }} Resultados</div>
+            <select id="sizePerPage" [(ngModel)]="sizePerPage" style="border: 1px solid #d6d6d6;border-radius: 5px;">
+              <option *ngFor="let size of [5, 10, 15, 20]" [value]="size">
+                {{ size }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

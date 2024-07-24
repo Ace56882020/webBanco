@@ -1,0 +1,21 @@
+$green-color: #4DA74C; /* Color verde */
+$blue-color:#26C6DA;
+$black-color:#000;
+
+.green-background {
+  background-color: $green-color !important;
+  color: #fff !important; 
+  margin: 0 2px;
+}
+
+.blue-background {
+    background-color: $blue-color !important;
+    color: #fff !important; 
+    margin: 0 2px;
+  }
+
+  .black-background {
+    background-color: $black-color !important;
+    color: #fff !important; 
+    margin: 0 2px;
+  }
