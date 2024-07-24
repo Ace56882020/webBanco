@@ -45,7 +45,6 @@ export class ListProductsComponent implements OnInit {
   constructor(
     private productSrv: ProductService,
     private router: Router,
-    private loadingSrv: LoadingService,
     private dataSrv: DataService,
     public dialog: MatDialog
   ) {}
@@ -105,7 +104,7 @@ export class ListProductsComponent implements OnInit {
       data: { id: product.id, name: product.name },
       disableClose: true,
       width:'40',
-      height:'30%',
+      // height:'30%',
       panelClass:'dialog-contaoner'
     });
     dialogRef.afterClosed().subscribe((resp: any) => {

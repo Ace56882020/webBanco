@@ -80,7 +80,7 @@
               </div>
             </div>
           </div>
-          <div style="display: flex; justify-content: space-between">
+          <div style="display: flex; justify-content: space-between;margin: 0 15px;">
             <div class="footer">{{ productList.length }} Resultados</div>
             <select id="sizePerPage" [(ngModel)]="sizePerPage" class="select-option">
               <option *ngFor="let size of [5, 10, 15, 20]" [value]="size">

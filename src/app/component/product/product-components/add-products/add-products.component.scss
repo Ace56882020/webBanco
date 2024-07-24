@@ -5,6 +5,7 @@
     max-width: 600px;
     width: 100%;
     margin: auto;
+    
   }
   
   .form-container h2 {
@@ -98,5 +99,9 @@
     .flex-input{
       display: grid
     }
-  
+    .form-container {
+
+      justify-content: center;
+      display: grid;
+    }
   }
